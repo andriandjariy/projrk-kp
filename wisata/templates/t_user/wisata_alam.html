@@ -10,32 +10,76 @@ WISATA
 {%endblock%}
 
 {%block pilihan%}
-
-{%for dt in form%}
-<div class="col-md-4" data-scrollreveal="enter top over 1.5s after 0.1s">
-  <div class="productbox">
-    <div class="fadeshop">
-      <div class="captionshop text-center" style="display: none;">
-        <h3>{{dt.nama_wisata}}</h3>
-        <p>
-          Klik Untuk Melihat Info Lebih Lengkap.
-        </p>
-        <p>
-          <!-- <a href="#" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Purchase</a> -->
-          <a href="{{url_for('guser.keterangan_wisata', ed_id=dt.id)}}" class="learn-more detailslearn"><i
-              class="fa fa-link"></i> Details</a>
-        </p>
-      </div>
-      <span class="maxproduct"><img src="{{ url_for ('static', filename='css layout/images/' + dt.gambar)}}" alt=""
-          width="420" height="230"></span>
+<div class="row">
+  <form action="" method="POST" class="form-inline">
+    <div class="input-group">
+      <input style="margin-left: 10px;" type="text" class="form-control mr-sm-2" placeholder="ketik nama di sini ..."
+        aria-label="Cari" aria-describedby="basic-addon2" name="tag" id="tag">
     </div>
-    <div class="product-details">
-      <a href="#">
-        <h1>{{dt.nama_wisata}}</h1>
-      </a>
+    <div class="input-group-append">
+      <input style="margin-top:-64px; margin-left: 220px; width: 50px;" class="form-control mr-sm-2 btn btn-primary"
+        type="submit" value="Cari">
+    </div>
+
+  </form>
+  {%for dt in DataWisata.items%}
+  <div class="col-md-4" data-scrollreveal="enter top over 1.5s after 0.1s">
+    <div class="productbox">
+      <div class="fadeshop">
+        <div class="captionshop text-center" style="display: none;">
+          <h3>{{dt.nama_wisata}}</h3>
+          <p>
+            Klik Untuk Melihat Info Lebih Lengkap.
+          </p>
+          <p>
+            <!-- <a href="#" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Purchase</a> -->
+            <a href="{{url_for('guser.keterangan_wisata', ed_id=dt.id)}}" class="learn-more detailslearn"><i
+                class="fa fa-link"></i> Selegkapnya</a>
+          </p>
+        </div>
+        <span class="maxproduct"><img src="{{ url_for ('static', filename='css layout/images/' + dt.gambar)}}" alt=""
+            width="420" height="230"></span>
+      </div>
+      <div class="product-details">
+        <a href="#">
+          <h1>{{dt.nama_wisata}}</h1>
+        </a>
+      </div>
     </div>
   </div>
+  {%endfor%}
+  <nav aria-label="Page navigation example" style="margin-left: 13px;">
+    <ul class="pagination mt-4">
+      {% if DataWisata.has_prev %}
+      <li class="page-item"><a class="page-link"
+          href="{{url_for('guser.wisata_alam', page=DataWisata.prev_num)}}">Previous</a></li>
+      {% else %}
+      <li class="page-item disabled"><a class="page-link">Previous</a>
+        {% endif %}
+      </li>
+
+      {% for page in DataWisata.iter_pages(left_edge=3, right_edge=3) %}
+      {% if page %}
+      {% if page==DataWisata.page %}
+      <li class="page-item active"><a class="page-link" href="{{url_for('guser.wisata_alam', page=page)}}">{{ page
+          }}</a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="{{url_for('guser.wisata_alam', page=page)}}">{{ page }}</a>
+      </li>
+      {% endif %}
+      {% else %}
+      <li class="page-item disabled" id="example_ellipsis"><a class="page-link" href="#">...</a></li>
+      {% endif %}
+      {% endfor %}
+
+      {% if DataWisata.has_next %}
+      <li class="page-item"><a class="page-link"
+          href="{{ url_for('guser.wisata_alam', page=DataWisata.next_num)}}">Next</a></li>
+      {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
 </div>
-{%endfor%}
 
 {%endblock%}

@@ -3,26 +3,74 @@
 {%block konten%}
 <div class="row row-cols-1 row-cols-md-3">
   <div class="col-md-4 mb-4">
-    <table class="table table-responsive table-hover table-dark">
-      <tr>
-        <th scope="col">NAMA</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Hapus</th>
-      </tr>
-      <tr>
-        {%for data in form%}
-        <td class="text-uppercase">{{data.nama}}</td>
-        <td><a href="{{url_for('gadmin.update_adatbudaya', ed_id=data.id)}}" class="btn btn-warning btn-xs">Edit</a>
-        </td>
-        <td><a href="/hapus_adatbudaya/{{data.id}}" class="btn btn-danger btn-xs"
-            onclick="return confirm('Yakin ingin hapus')">Hapus</a>
-        </td>
-      </tr>
-      <!-- akhir data pengaduan -->
+    <div class="row">
+      <div class="col-md-12">
+        <form action="" method="POST"
+          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search pb-4">
+          <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="ketik nama di sini ..."
+              aria-label="Cari" aria-describedby="basic-addon2" name="tag" id="tag">
+            <div class="input-group-append">
+              <input class="btn btn-primary" type="submit" value="Cari">
+            </div>
+          </div>
+        </form>
+        <table class="table table-responsive table-hover table-dark">
+          <tr>
+            <th scope="col">NAMA</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Hapus</th>
+          </tr>
+          <tr>
+            {%for data in DataAdatBudaya.items%}
+            <td class="text-uppercase">{{data.nama}}</td>
+            <td><a href="{{url_for('gadmin.update_adatbudaya', ed_id=data.id)}}" class="btn btn-warning btn-xs">Edit</a>
+            </td>
+            <td><a href="/hapus_adatbudaya/{{data.id}}" class="btn btn-danger btn-xs"
+                onclick="return confirm('Yakin ingin hapus')">Hapus</a>
+            </td>
+          </tr>
+          <!-- akhir data pengaduan -->
 
-      {%endfor%}
-    </table>
+          {%endfor%}
+        </table>
+        <nav aria-label="Page navigation example" style="margin-left: 13px;">
+          <ul class="pagination mt-4">
+            {% if DataAdatBudaya.has_prev %}
+            <li class="page-item"><a class="page-link"
+                href="{{url_for('gadmin.admin_adatbudaya', page=DataAdatBudaya.prev_num)}}">Previous</a></li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link">Previous</a>
+              {% endif %}
+            </li>
+
+            {% for page in DataAdatBudaya.iter_pages(left_edge=3, right_edge=3) %}
+            {% if page %}
+            {% if page==DataAdatBudaya.page %}
+            <li class="page-item active"><a class="page-link"
+                href="{{url_for('gadmin.admin_adatbudaya', page=page)}}">{{
+                page
+                }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="{{url_for('gadmin.admin_adatbudaya', page=page)}}">{{ page
+                }}</a>
+            </li>
+            {% endif %}
+            {% else %}
+            <li class="page-item disabled" id="example_ellipsis"><a class="page-link" href="#">...</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if DataAdatBudaya.has_next %}
+            <li class="page-item"><a class="page-link"
+                href="{{ url_for('gadmin.admin_adatbudaya', page=DataAdatBudaya.next_num)}}">Next</a></li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+
   </div>
-
-</div>
-{% endblock %}
+  {% endblock %}

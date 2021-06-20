@@ -17,34 +17,6 @@ h1,h2,h3,h4,h5,h6 {
 	list-style:none;
 	line-height:inherit;
 }
-/* === Progress Bar === */
-.progress {
-  height: 7px;
-  margin-bottom: 0;
-  overflow: hidden;
-  background-color: #F1F1F1;
-  border-radius: 15px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-.progress-bar {
-  border-radius: 15px;
-  float: left;
-  width: 0;
-  height: 100%;
-  font-size: 12px;
-  line-height: 7px;
-  color: #fff;
-  text-align: center;
-  background-color: #353353;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transition: width 0.6s ease;
-  -o-transition: width 0.6s ease;
-  transition: width 0.6s ease;
-}
-
 .text-left {
 	text-align:left !Important;
 }
@@ -96,7 +68,7 @@ header .navbar-white {
 }
 
 .item.header_ {
-	background-image:url(../images/hee.jpg);
+	background-image:url(../images/hee1.jpg);
 	background-repeat:no-repeat;
 	background-position:0% top;
 	background-size:cover;
@@ -156,8 +128,8 @@ header .navbar-white {
  font-size:45px;
  line-height:90px;
  text-transform:uppercase;
- padding-top:50px;
- padding-bottom:50px;
+ padding-top:90px;
+ padding-bottom:90px;
  font-weight:700;
  font-family:Dosis;
 }
@@ -741,7 +713,7 @@ ul,ol {
 	.navbar-lg .navbar-nav>li>a {
 		padding-top:26px;
 		padding-bottom:26px;
-		font-size:18px;
+		 font-size:18px;
 	}
 	.navbar-lg .navbar-nav>li>a:hover,.navbar-lg .navbar-nav>li>a:active {
 		background:#fff;

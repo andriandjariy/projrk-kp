@@ -49,8 +49,8 @@ class editwisata_F(FlaskForm):
 
 
 class sejarah_F(FlaskForm):
-    nama = StringField('Naama Sejarah', validators=[DataRequired()])
-    keterangan = CKEditorField('Keterangan', validators=[DataRequired()])
+    nama = StringField('Naama Sejarah')
+    keterangan = CKEditorField('Keterangan')
     gambar = FileField('Tambah Gambar', validators=[FileAllowed(['jpg','png'])])
     submit = SubmitField('post') 
 
@@ -73,8 +73,8 @@ class editsejarah_F(FlaskForm):
     submit = SubmitField('post') 
 
 class adatbudaya_F(FlaskForm):
-    nama = StringField('Nama Adat & Budaya', validators=[DataRequired()])
-    keterangan = CKEditorField('Keterangan', validators=[DataRequired()])
+    nama = StringField('Nama Adat & Budaya')
+    keterangan = CKEditorField('Keterangan')
     gambar = FileField('Tambah Gambar', validators=[FileAllowed(['jpg','png'])])
     submit = SubmitField('post')
 

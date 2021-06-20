@@ -8,11 +8,6 @@ guser= Blueprint('guser',__name__)
 def home():
     return render_template("t_user/branda.html")
 
-@guser.route("/wisata_alam")
-def wisata_alam():
-    form=Twisata.query.all()
-    return render_template("t_user/wisata_alam.html", form=form)
-
 @guser.route("/galery")
 def galery():
     return render_template("t_user/galery.html")
@@ -32,10 +27,31 @@ def galery_adatbudaya():
     data=Tadat_budaya.query.all()
     return render_template("t_user/galery_sejarah.html", data=data)
 
-@guser.route("/sejarah")
-def sejarah():
-    form=Tsejarah.query.all()
-    return render_template("t_user/sejarah.html", form=form)
+@guser.route("/wisata_alam", methods=['GET', 'POST'], defaults={"page": 1})
+@guser.route("/wisata_alam/<int:page>", methods=['GET', 'POST'])
+def wisata_alam(page):
+    page = page
+    pages = 3
+    DataWisata = Twisata.query.order_by(Twisata.id.desc()).paginate(page, pages, error_out=False)
+    if request.method == 'POST' and 'tag' in request.form:
+        tag = request.form["tag"]
+        search ="%{}%".format(tag)
+        DataWisata = Twisata.query.filter(Twisata.nama.like(search)).paginate(page, pages, error_out=False)
+        return render_template("t_user/wisata_alam.html", DataWisata=DataWisata, tag=tag)
+    return render_template("t_user/wisata_alam.html", DataWisata=DataWisata )
+
+@guser.route("/sejarah", methods=['GET', 'POST'], defaults={"page": 1})
+@guser.route("/sejarah/<int:page>", methods=['GET', 'POST'])
+def sejarah(page):
+    page = page
+    pages = 3
+    DataSejarah = Tsejarah.query.order_by(Tsejarah.id.desc()).paginate(page, pages, error_out=False)
+    if request.method == 'POST' and 'tag' in request.form:
+        tag = request.form["tag"]
+        search ="%{}%".format(tag)
+        DataSejarah = Tsejarah.query.filter(Tsejarah.nama.like(search)).paginate(page, pages, error_out=False)
+        return render_template("t_user/sejarah.html", DataSejarah=DataSejarah, tag=tag)
+    return render_template("t_user/sejarah.html", DataSejarah=DataSejarah )
 
 @guser.route("/dataadat_budaya", methods=['GET', 'POST'], defaults={"page": 1})
 @guser.route("/dataadat_budaya/<int:page>", methods=['GET', 'POST'])

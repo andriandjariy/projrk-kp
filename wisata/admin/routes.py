@@ -39,10 +39,18 @@ def isi_data_wisata():
         return redirect(url_for('gadmin.isi_data_wisata'))
     return render_template("t_admin/wisata.html", form=form)
 
-@gadmin.route("/admin_wisata")
-def admin_wisata():
-    form=Twisata.query.all()
-    return render_template("t_admin/data_wisata.html", form=form)
+@gadmin.route("/admin_wisata", methods=['GET', 'POST'], defaults={"page": 1})
+@gadmin.route("/admin_wisata/<int:page>", methods=['GET', 'POST'])
+def admin_wisata(page):
+    page = page
+    pages = 5
+    DataWisata = Twisata.query.order_by(Twisata.id.desc()).paginate(page, pages, error_out=False)
+    if request.method == 'POST' and 'tag' in request.form:
+        tag = request.form["tag"]
+        search ="%{}%".format(tag)
+        DataWisata = Twisata.query.filter(Twisata.nama.like(search)).paginate(page, pages, error_out=False)
+        return render_template("t_admin/data_wisata.html", DataWisata=DataWisata, tag=tag)
+    return render_template("t_admin/data_wisata.html", DataWisata=DataWisata )
 
 @gadmin.route("/editwisata/<int:ed_id>/update", methods=['GET', 'POST'])
 def update_wisata(ed_id):
@@ -64,8 +72,8 @@ def update_wisata(ed_id):
         form.lokasi.data=datawisata.lokasi
     return render_template('t_admin/editwisata.html', form=form)
 
-@gadmin.route("/hapus_wisata/<id>", methods=['GET', 'POST'])
-def hapus_wisata(id):
+@gadmin.route("/hapus/<id>", methods=['GET', 'POST'])
+def hapus(id):
     my_data = Twisata.query.get(id)
     db.session.delete(my_data)
     db.session.commit()
@@ -88,10 +96,18 @@ def isi_sejarah():
         return redirect(url_for('gadmin.isi_sejarah'))
     return render_template("t_admin/sejarah.html", form=form)
 
-@gadmin.route("/admin_sejarah")
-def admin_sejarah():
-    form=Tsejarah.query.all()
-    return render_template("t_admin/data_sejarah.html", form=form)
+@gadmin.route("/admin_sejarah", methods=['GET', 'POST'], defaults={"page": 1})
+@gadmin.route("/admin_sejarah/<int:page>", methods=['GET', 'POST'])
+def admin_sejarah(page):
+    page = page
+    pages = 5
+    DataSejarah = Tsejarah.query.order_by(Tsejarah.id.desc()).paginate(page, pages, error_out=False)
+    if request.method == 'POST' and 'tag' in request.form:
+        tag = request.form["tag"]
+        search ="%{}%".format(tag)
+        DataSejarah = Tsejarah.query.filter(Tsejarah.nama.like(search)).paginate(page, pages, error_out=False)
+        return render_template("t_admin/data_sejarah.html", DataSejarah=DataSejarah, tag=tag)
+    return render_template("t_admin/data_sejarah.html", DataSejarah=DataSejarah )
 
 @gadmin.route("/editsejarah/<int:ed_id>/update", methods=['GET', 'POST'])
 def update_sejarah(ed_id):
@@ -122,15 +138,24 @@ def hapus_sejarah(id):
 
 
 # awal route adat budaya
-@gadmin.route("/admin_adatbudaya")
-def admin_adatbudaya():
-    form=Tadat_budaya.query.all()
-    return render_template("t_admin/data_budaya.html", form=form)
+@gadmin.route("/admin_adatbudaya", methods=['GET', 'POST'], defaults={"page": 1})
+@gadmin.route("/admin_adatbudaya/<int:page>", methods=['GET', 'POST'])
+def admin_adatbudaya(page):
+    page = page
+    pages = 5
+    DataAdatBudaya = Tadat_budaya.query.order_by(Tadat_budaya.id.desc()).paginate(page, pages, error_out=False)
+    if request.method == 'POST' and 'tag' in request.form:
+        tag = request.form["tag"]
+        search ="%{}%".format(tag)
+        DataAdatBudaya = Tadat_budaya.query.filter(Tadat_budaya.nama.like(search)).paginate(page, pages, error_out=False)
+        return render_template("t_admin/data_budaya.html", DataAdatBudaya=DataAdatBudaya, tag=tag)
+    return render_template("t_admin/data_budaya.html", DataAdatBudaya=DataAdatBudaya )
+
 
 @gadmin.route("/hapus_adatbudaya/<id>", methods=['GET', 'POST'])
 def hapus_adatbudaya(id):
-    H_data = Tadat_budaya.query.get(id)
-    db.session.delete(H_data)
+    my_data = Tadat_budaya.query.get(id)
+    db.session.delete(my_data)
     db.session.commit()
     flash('Data berhasisl dihapus', 'warning')
     return redirect(url_for('gadmin.admin_adatbudaya'))
