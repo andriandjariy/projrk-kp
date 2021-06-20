@@ -1,0 +1,121 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten%}
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+    
+                        <!-- Page Heading -->
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <h1 class="h3 mb-0 text-gray-800">Industri</h1>
+                            <!--bagian bisa dimasukan form seacrh dari masing-masing data-->
+                            <p></p>
+                        </div>
+    
+                        <!-- Content Row -->
+                    
+                        <div class="row">
+    
+                            <!-- Data indusrti -->
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="card shadow mb-4">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">Ubah Hak Akses</h6>
+                                       
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <!--form inputan-->
+                                        <p>bagian untuk meletakan form inputan</p>
+                                        <form method="POST">
+                                            {{form.hidden_tag()}}
+
+                                        <div class="form-group">
+                                            {{form.username.label(class="form-control-label")}}
+                                            {% if form.username.errors %}
+                                                 {{form.username(class="form-control is-invalid")}}
+                                        
+                                                 <div class="invalid-feedback">
+                                                     {%for error in form.username.errors %}
+                                                     <span>{{error}}</span>
+                                                     {% endfor %}
+                                                 </div>
+                                            {%else%}
+                                                {{form.username(class="form-control")}}
+                                            
+                                            {%endif%}
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{form.password.label(class="form-control-label")}}
+                                            {% if form.password.errors %}
+                                                 {{form.password(class="form-control is-invalid")}}
+                                        
+                                                 <div class="invalid-feedback">
+                                                     {%for error in form.password.errors %}
+                                                     <span>{{error}}</span>
+                                                     {% endfor %}
+                                                 </div>
+                                            {%else%}
+                                                {{form.password(class="form-control")}}
+                                            
+                                            {%endif%}
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{form.usernamebaru.label(class="form-control-label")}}
+                                            {% if form.usernamebaru.errors %}
+                                                 {{form.usernamebaru(class="form-control is-invalid")}}
+                                        
+                                                 <div class="invalid-feedback">
+                                                     {%for error in form.usernamebaru.errors %}
+                                                     <span>{{error}}</span>
+                                                     {% endfor %}
+                                                 </div>
+                                            {%else%}
+                                                {{form.usernamebaru(class="form-control")}}
+                                            
+                                            {%endif%}
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{form.passwordbaru.label(class="form-control-label")}}
+                                            {% if form.passwordbaru.errors %}
+                                                 {{form.passwordbaru(class="form-control is-invalid")}}
+                                        
+                                                 <div class="invalid-feedback">
+                                                     {%for error in form.passwordbaru.errors %}
+                                                     <span>{{error}}</span>
+                                                     {% endfor %}
+                                                 </div>
+                                            {%else%}
+                                                {{form.passwordbaru(class="form-control")}}
+                                            
+                                            {%endif%}
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{form.submit(class="btn btn-primary")}}
+                                            <a class="btn btn-warning" href="{{url_for('gadmin.admin')}}">Kembali</a>
+                                        </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Input Kategori -->
+                            <div class="col-xl-8 col-lg-7">
+                                </div>
+                                    <!-- Card Body -->
+                                   
+                        </div>
+    
+    </div></div>      
+    
+    </div>
+                    <!-- /.container-fluid -->
+{% endblock%}
+    

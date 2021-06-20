@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="">
+  <!-- <link href="../../static/css layout/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <!-- <link href="../../static/css layout/css/style.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css layout/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css layout/css/style.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css layout/css/animate.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+  <link href="{{ url_for ('static', filename='css layout/css/prettyPhoto.css')}}" rel="stylesheet">
+  <link href="{{ url_for ('static', filename='css layout/js/google-code-prettify/prettify.css')}}" rel="stylesheet">
+  <link href="{{ url_for ('static', filename='css layout/css/flexslider.css')}}" rel="stylesheet">
+  <title>GALERY</title>
+  <link rel="icon" type="css layout/images/logo.png"
+    href="{{ url_for ('static', filename='css layout/images/logo.png')}}">
+</head>
+
+<body>
+
+
+  <!-- HEADER =============================-->
+  <header class="item header_ margin-top-0">
+    <div class="wrapper">
+      <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a href="{{url_for('guser.home')}}" class="navbar-brand brand"> Disbudpar Tikep </a>
+          </div>
+          <div id="navbar-collapse-02" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="propClone btn-large e_wiggle"><a href="{{url_for('guser.home')}}">Beranda</a></li>
+              <li class="propClone btn-large e_wiggle"><a href="{{url_for('guser.sejarah')}}">Sejarah</a></li>
+              <li class="propClone btn-large e_wiggle"><a href="{{url_for('guser.wisata_alam')}}">Wisata</a></li>
+              <li class="propClone btn-large e_wiggle"><a href="{{url_for('guser.adat_budaya')}}">Adat & Budaya</a>
+              </li>
+              <li class="propClone btn-large e_wiggle"><a href="{{url_for('guser.galery')}}">Galery</a></li>
+              <li class="propClone btn-large e_wiggle"><a href="{{url_for('guser.contac')}}">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="text-homeimag">
+              <div class="maintext-image" data-scrollreveal="enter top over 1.5s after 0.1s">
+                Dinas pariwisata
+              </div>
+              <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
+                Kota Tidore Kepulauan
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- LATEST ITEMS =============================-->
+  <section class="item content">
+    <div class="container">
+      <div class="underlined-title">
+        <div class="editContent">
+          <h1 class="text-center latestitems">LITS GALERY ITEMS</h1>
+        </div>
+        <div class="wow-hr type_short">
+          <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Galery wisata -->
+        <div class="col-md-4" data-scrollreveal="enter top over 1.5s after 0.1s">
+          <div class="productbox">
+            <div class="fadeshop">
+              <div class="captionshop text-center" style="display: none;">
+                <h3>GALERY</h3>
+                <p>
+                  klik di sini untuk melihat gambar wisata tidore kepulauan
+                </p>
+                <p>
+                  <a href="{{url_for('guser.galery_wisata')}}" class="learn-more detailslearn"><i
+                      class="fa fa-link"></i> Details</a>
+                </p>
+              </div>
+              <span class="maxproduct"><img src="{{ url_for ('static', filename='css layout/images/product2.jpg')}}"
+                  alt=""></span>
+            </div>
+            <div class="product-details">
+              <a href="#">
+                <h1>wisata</h1>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- akhir galery wisata -->
+
+        <!-- galery sejarah-->
+        <div class="col-md-4" data-scrollreveal="enter top over 1.5s after 0.1s">
+          <div class="productbox">
+            <div class="fadeshop">
+              <div class="captionshop text-center" style="display: none;">
+                <h3>GALERY</h3>
+                <p>
+                  klik di sini untuk melihat gambar gambar sejarah tidore kepulauan
+                </p>
+                <p>
+                  <a href="{{url_for('guser.galery_sejarah')}}" class="learn-more detailslearn"><i
+                      class="fa fa-link"></i> Details</a>
+                </p>
+              </div>
+              <span class="maxproduct"><img src="{{ url_for ('static', filename='css layout/images/product3.jpg')}}"
+                  alt=""></span>
+            </div>
+            <div class="product-details">
+              <a href="">
+                <h1>Sejarah</h1>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- akhir galery sejaraj -->
+
+        <!-- Galery adat budaya -->
+        <div class="col-md-4" data-scrollreveal="enter top over 1.5s after 0.1s">
+          <div class="productbox">
+            <div class="fadeshop">
+              <div class="captionshop text-center" style="display: none;">
+                <h3>GALERY</h3>
+                <p>
+                  klik di sini untuk melihat gambar adat dan budaya tidore kepulauan
+                </p>
+                <p>
+                  <a href="{{url_for('guser.galery_adatbudaya')}}" class="learn-more detailslearn"><i
+                      class="fa fa-link"></i> Details</a>
+                </p>
+              </div>
+              <span class="maxproduct"><img src="{{ url_for ('static', filename='css layout/images/product2.jpg')}}"
+                  alt=""></span>
+
+            </div>
+            <div class="product-details">
+              <a href="#">
+                <h1>Adat Dan Budaya</h1>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- akhir galery adat budaya -->
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <!-- BUTTON =============================-->
+  <div class="item content">
+    <!-- <div class="container text-center">
+      <a href="shop.html" class="homebrowseitems">Browse All Products
+        <div class="homebrowseitemsicon">
+          <i class="fa fa-star fa-spin"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+  <br /> -->
+
+
+    <!-- TESTIMONIAL =============================-->
+    <div class="item content">
+      <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="slide-text">
+            <div>
+              <h2><span class="uppercase">Awesome Support</span></h2>
+              <img src="http://wowthemes.net/demo/salique/salique-boxed/images/temp/avatar2.png" alt="Awesome Support">
+              <p>
+                The support... I can only say it's awesome. You make a product and you help people out any way you can
+                even if it means that you have to log in on their dashboard to sort out any problems that customer might
+                have. Simply Outstanding!
+              </p>
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- CALL TO ACTION =============================-->
+    <section class="content-block" style="background-color:#00bba7;">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
+              <h1 class="callactiontitle"> Promote Items Area Give Discount to Buyers <span class="callactionbutton"><i
+                    class="fa fa-gift"></i> WOW24TH</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOOTER =============================-->
+    <div class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <p class="footernote">
+            Connect with Dinas Kebudayaan & Pariwisata
+          </p>
+          <ul class="social-iconsfooter">
+            <li><a href="#"><i class="fa fa-phone"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+          </ul>
+          <p>
+            &copy; dinas kebudayaan dan pariwisata<br />
+            <!-- Scorilo - Free template by <a href="https://www.wowthemes.net/">WowThemesNet</a> -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS =============================-->
+    <script src="{{ url_for ('static', filename='css layout/js/jquery-.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/anim.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/animate.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery-hover-effect.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/raphael-min.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery.easing.1.3.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/bootstrap.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/google-code-prettify/prettify.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery.elastislide.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery.flexslider.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/jquery-hover-effect.js')}}"></script>
+    <script src="{{ url_for ('static', filename='css layout/js/animate.js')}}"></script>
+
+    <!-- Template Custom JavaScript File -->
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+      //----HOVER CAPTION---//	  
+      jQuery(document).ready(function ($) {
+        $('.fadeshop').hover(
+          function () {
+            $(this).find('.captionshop').fadeIn(150);
+          },
+          function () {
+            $(this).find('.captionshop').fadeOut(150);
+          }
+        );
+      });
+    </script>
+
+</body>
+
+</html>

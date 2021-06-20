@@ -1,0 +1,50 @@
+{% extends "t_admin/base_login.html" %}
+
+{%block title%}
+<h3 class="text-center">Login Admin</h3>
+{%endblock title%}
+{% block kontent %}
+<h1>Login Admin</h1>
+<form method="POST">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+        {{form.username.label(class="form-control-label")}}
+        {% if form.username.errors %}
+        {{form.username(class="form-control is-invalid")}}
+
+        <div class="invalid-feedback">
+            {% for error in form.username.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{form.username(class="form-control")}}
+        {% endif %}
+    </div>
+
+
+    <div class="form-group">
+        {{form.password.label(class="form-control-label")}}
+        {% if form.password.errors %}
+        {{form.password(class="form-control is-invalid")}}
+
+        <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{form.password(class="form-control")}}
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{form.submit(class="btn btn-primary btn-sm")}}
+    </div>
+    <a class="btn btn-success btn-sm" style="margin-left: 80%; margin-top: -90px;"
+        href="{{url_for('guser.home')}}">Back</a>
+
+</form>
+
+
+{% endblock%}

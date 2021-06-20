@@ -1,0 +1,36 @@
+{% extends 't_admin/base.html'%}
+
+{%block konten%}
+
+<div class="container">
+    <h1>Edit Data Adat & Kebudayaan</h1>
+    <div class="jumbotron">
+        <form method="POST" enctype="multipart/form-data">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                {{form.nama.label(class="form-control-label")}}
+                {{form.nama(class="form-control ")}}
+            </div>
+            <div class="form-group" id="editor">
+                {{form.keterangan.label(class="form-control-label")}}
+                {{form.keterangan(class="form-control ")}}
+            </div>
+            <div class="form-group">
+                {{form.gambar.label(class="form-control-label")}}
+                {{form.gambar(class="form-control ")}}
+            </div>
+
+            <div class="form-group">
+                {{form.submit(class="btn btn-primary")}}
+            </div>
+            <a href="{{url_for('gadmin.admin_adatbudaya')}}" class="btn btn-danger"> Kembali</a>
+        </form>
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='keterangan') }}
+    </div>
+</div>
+
+
+</div>
+</div>
+{%endblock%}

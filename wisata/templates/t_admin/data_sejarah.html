@@ -1,0 +1,27 @@
+{% extends 't_admin/base.html'%}
+
+{%block konten%}
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col-md-4 mb-4">
+    <table class="table table-responsive table-hover table-dark">
+      <tr>
+        <th scope="col">NAMA</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Hapus</th>
+      </tr>
+      <tr>
+        {%for data in form%}
+        <td class="text-uppercase">{{data.nama}}</td>
+        <td><a href="{{url_for('gadmin.update_sejarah', ed_id=data.id)}}" class="btn btn-warning btn-xs">Edit</a></td>
+        <td><a href="/hapus_sejarahy/{{data.id}}" class="btn btn-danger btn-xs"
+            onclick="return confirm('Yakin ingin hapus')">Hapus</a>
+        </td>
+      </tr>
+      <!-- akhir data pengaduan -->
+
+      {%endfor%}
+    </table>
+  </div>
+
+</div>
+{% endblock %}

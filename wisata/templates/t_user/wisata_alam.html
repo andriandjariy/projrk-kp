@@ -1,0 +1,41 @@
+{%extends 't_user/base_pilihan.html'%}
+
+
+{%block title%}
+WISATA
+{%endblock%}
+
+{%block judul%}
+<h1 class="text-center latestitems">LIST ITEMS WISATA </h1>
+{%endblock%}
+
+{%block pilihan%}
+
+{%for dt in form%}
+<div class="col-md-4" data-scrollreveal="enter top over 1.5s after 0.1s">
+  <div class="productbox">
+    <div class="fadeshop">
+      <div class="captionshop text-center" style="display: none;">
+        <h3>{{dt.nama_wisata}}</h3>
+        <p>
+          Klik Untuk Melihat Info Lebih Lengkap.
+        </p>
+        <p>
+          <!-- <a href="#" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Purchase</a> -->
+          <a href="{{url_for('guser.keterangan_wisata', ed_id=dt.id)}}" class="learn-more detailslearn"><i
+              class="fa fa-link"></i> Details</a>
+        </p>
+      </div>
+      <span class="maxproduct"><img src="{{ url_for ('static', filename='css layout/images/' + dt.gambar)}}" alt=""
+          width="420" height="230"></span>
+    </div>
+    <div class="product-details">
+      <a href="#">
+        <h1>{{dt.nama_wisata}}</h1>
+      </a>
+    </div>
+  </div>
+</div>
+{%endfor%}
+
+{%endblock%}

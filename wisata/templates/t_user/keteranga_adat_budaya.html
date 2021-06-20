@@ -1,0 +1,40 @@
+{%extends 't_user/product.html'%}
+
+
+{%block title%}
+KETERANGAN SELEGKAPNYA ADAN & KEBUDAYAAN
+{%endblock%}
+
+{%block titlee%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <div class="text-homeimag">
+        <div class="maintext-image" data-scrollreveal="enter top over 1.5s after 0.1s">
+          Sejarah
+        </div>
+        <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
+          <h4 class="text-uppercase"></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
+
+{%block nama%}
+{{dt.nama}}
+{%endblock%}
+
+{%block ket%}
+<!-- <div class="jumbotron"> -->
+<div class="text-justify">
+  <p>{{dt.keterangan | safe}}</p>
+</div>
+<!-- </div> -->
+{%endblock%}
+{%block gambar%}
+<img src="{{ url_for ('static', filename='css layout/images/' + dt.gambar)}}"
+  data-scrollreveal="enter top over 1.5s after 0.1s" alt="" width="330" height="200">
+{%endblock%}

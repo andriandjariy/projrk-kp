@@ -1,0 +1,58 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten%}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Hak Akses</h1>
+    <!--bagian bisa dimasukan form seacrh dari masing-masing data-->
+    <p></p>
+  </div>
+
+  <!-- Content Row -->
+
+  <div class="row">
+
+    <!-- Data indusrti -->
+    <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Ubah Hak Akses</h6>
+
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+
+
+          <div class="form-group">
+            <p>Klik tautan di bawah ini untuk mengubah Hak Akses, Pastikan kamu masih mengetahui username
+              dan password sebelumnya.</p>
+            {% for di in data %}
+            <a class="btn btn-info" href="{{url_for('gadmin.update_admin', ed_id=di.id)}}">Ubah Hak
+              Akses</a>
+            {% endfor %}
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Kategori -->
+    <div class="col-xl-8 col-lg-7">
+    </div>
+    <!-- Card Body -->
+
+  </div>
+
+</div>
+</div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock%}

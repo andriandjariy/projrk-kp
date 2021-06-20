@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEMENTERIAN PARIWISATA & BUDAYA</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{{ url_for ('static', filename='CSS/css/bootstrap.min.css')}}">
+  <link href="{{ url_for ('static', filename='CSS/style.css')}}" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="{{ url_for ('static', filename='vendor/fontawesome-free-5.15.3-web/css/all.min.css')}}" rel="stylesheet"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <body>
+    <div class="row tengah">
+      <div class="col-md-5">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            {% with messages= get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, massage in messages %}
+
+            <div class="alert alert-{{category}}">
+              {{massage}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {%block kontent%}
+            {%endblock%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- jQuery library -->
+    <script src="{{ url_for ('static', filename='CSS/css/jquery.min.js')}}"></script>
+
+    <!-- Popper JS -->
+    <script src="{{ url_for ('static', filename='CSS/css/popper.min.js')}}"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="{{ url_for ('static', filename='CSS/css/bootstrap.min.css')}}"></script>
+
+  </body>
+
+</html>
